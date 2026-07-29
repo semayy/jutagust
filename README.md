@@ -1,0 +1,2 @@
+# jutagust
+Hedef ve Takvim
