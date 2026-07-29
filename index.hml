@@ -1,1 +1,488 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUTSACK - Ağustos 2026 Veri Odaklı Strateji Raporu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        jutsack: {
+                            black: '#111111',
+                            gold: '#C5A059',
+                            darkGold: '#A38243',
+                            light: '#F8F8F7',
+                            gray: '#F0F0F0',
+                            textGray: '#555555'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAFAFA;
+            color: #111111;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        .cause-effect-card {
+            background: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            transition: all 0.3s ease;
+        }
+        .cause-effect-card:hover {
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+            border-color: #C5A059;
+        }
+        .data-badge {
+            background-color: #111111;
+            color: #C5A059;
+        }
+    </style>
+</head>
+<body class="antialiased pb-20">
 
+    <!-- Header -->
+    <header class="bg-jutsack-black text-white py-12 sm:py-16 px-5 sm:px-6 md:px-12 fade-in">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-jutsack-gold font-bold text-xs tracking-[0.2em] uppercase mb-4">Analitik Büyüme Raporu & Aksiyon Planı</div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 sm:mb-6 leading-tight">
+                Temmuz Verileri Işığında<br>
+                <span class="text-jutsack-gold italic">Ağustos Ayı Optimizasyon Stratejisi</span>
+            </h1>
+            <p class="text-gray-400 text-base sm:text-lg max-w-3xl leading-relaxed">
+                Bu rapor, sadece hedefleri listelemez; Temmuz ayında elde edilen 1.15 Milyon TL'lik hacmin ardındaki kullanıcı davranışlarını analiz ederek, Ağustos ayındaki "Şalvar Gömlek Takım" lansmanı ve stok eritme operasyonlarının <strong class="text-white">matematiksel gerekçelerini</strong> ortaya koyar.
+            </p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-8 sm:mt-12 space-y-10 sm:space-y-12">
+
+        <!-- Core Data Context -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 fade-in delay-1">
+            <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+                <div class="text-sm text-gray-500 mb-1">Gerçekleşen Ciro (Temmuz)</div>
+                <div class="text-2xl sm:text-3xl font-bold font-serif text-jutsack-black">1.15M ₺</div>
+                <div class="text-xs text-green-600 mt-2 font-medium"><i class="fa-solid fa-arrow-up mr-1"></i>Güçlü Büyüme İvmesi</div>
+            </div>
+            <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+                <div class="text-sm text-gray-500 mb-1">Ağustos Hedefi (Projekte)</div>
+                <div class="text-2xl sm:text-3xl font-bold font-serif text-jutsack-gold">1.5M+ ₺</div>
+                <div class="text-xs text-gray-500 mt-2 font-medium">+%30 Agresif Büyüme Beklentisi</div>
+            </div>
+            <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+                <div class="text-sm text-gray-500 mb-1">Mobil Ciro Payı (iOS)</div>
+                <div class="text-2xl sm:text-3xl font-bold font-serif text-jutsack-black">1.0M ₺</div>
+                <div class="text-xs text-gray-500 mt-2 font-medium">Toplam cironun %87'si iPhone'dan</div>
+            </div>
+            <div class="bg-white p-5 sm:p-6 rounded-xl border border-gray-200">
+                <div class="text-sm text-gray-500 mb-1">Kilit Problem</div>
+                <div class="text-lg sm:text-xl font-bold font-serif text-red-600 mt-1 sm:mt-2">Durağan Stoklar</div>
+                <div class="text-xs text-gray-500 mt-2 font-medium">Sorbet, Cobalt, Şort Takımları</div>
+            </div>
+        </section>
+
+        <!-- Strategy 1: Stock Liquidation -->
+        <section class="fade-in delay-2">
+            <h2 class="text-xl sm:text-2xl font-serif font-bold mb-5 sm:mb-6 flex items-start sm:items-center leading-snug">
+                <span class="w-8 h-8 rounded-full bg-jutsack-black text-white flex items-center justify-center text-sm mr-3 shrink-0 mt-1 sm:mt-0">1</span>
+                Stok Eritme ve Sepet Ortalama (AOV) Optimizasyonu
+            </h2>
+            
+            <div class="cause-effect-card rounded-2xl p-5 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    <!-- Neden -->
+                    <div class="bg-gray-50 p-5 sm:p-6 rounded-xl">
+                        <h3 class="text-base sm:text-lg font-bold mb-4 flex items-center text-jutsack-black">
+                            <i class="fa-solid fa-chart-pie text-red-500 mr-2"></i> VERİ & TESPİT (Neden?)
+                        </h3>
+                        <p class="text-jutsack-textGray text-sm leading-relaxed mb-4">
+                            <strong>Ürün Performans Verisine Göre:</strong> 
+                            Satışların büyük kısmını (#11232 MERLOT - 17 Adet / 194.700 TL ve #11227 CHERRY - 20 Adet / 71.440 TL) lokomotif ürünler çekmektedir. Ancak <strong>Sorbet ve Cobalt Mini Wrap'ler ile Şort takımlarının stok devir hızı düşüktür.</strong> Bu ürünleri tek başına indirime sokmak marka değerini düşürecektir.
+                        </p>
+                        <ul class="text-sm space-y-2 text-jutsack-textGray">
+                            <li>• Tekil ürün pazarlaması, reklam edinme maliyetini (CAC) artırır.</li>
+                            <li>• Müşteri genellikle tek bir iddialı parça (ör: Merlot) almakla yetiniyor.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Sonuç/Aksiyon -->
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold mb-4 flex items-center text-jutsack-black">
+                            <i class="fa-solid fa-lightbulb text-jutsack-gold mr-2"></i> STRATEJİK AKSİYON (Nasıl Çözeriz?)
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border border-gray-100 rounded-lg shadow-sm">
+                                <strong class="text-sm block mb-1">Akıllı Cross-Sell (Çapraz Satış) Modülü:</strong>
+                                <p class="text-xs text-jutsack-textGray">Kullanıcı lokomotif bir ürünü (Merlot vb.) sepete eklediği saniye, ana sayfa arayüzünde slider'ın üstüne binmeyen şık bir modal açılmalıdır: <em>"Tatil valizin eksik kalmasın. Sepetine Cobalt Mini Wrap ekle, anında %30 indirim kazan."</em></p>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg shadow-sm">
+                                <strong class="text-sm block mb-1">"Birlikte Al" Psikolojisi:</strong>
+                                <p class="text-xs text-jutsack-textGray">Stok fazlası ürünü "hediye" veya "fırsat" olarak çerçeveleyerek hem stokları eritir hem de sipariş başına ortalama paket tutarını 11.450 TL'nin üzerine çıkarırız.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy 2: Launch Strategy -->
+        <section class="fade-in delay-2">
+            <h2 class="text-xl sm:text-2xl font-serif font-bold mb-5 sm:mb-6 flex items-start sm:items-center leading-snug">
+                <span class="w-8 h-8 rounded-full bg-jutsack-black text-white flex items-center justify-center text-sm mr-3 shrink-0 mt-1 sm:mt-0">2</span>
+                Şalvar Gömlek Takım Lansmanı & Kıtlık İlkesi
+            </h2>
+            
+            <div class="cause-effect-card rounded-2xl p-5 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    <!-- Neden -->
+                    <div class="bg-gray-50 p-5 sm:p-6 rounded-xl">
+                        <h3 class="text-base sm:text-lg font-bold mb-4 flex items-center text-jutsack-black">
+                            <i class="fa-solid fa-users text-blue-500 mr-2"></i> VERİ & TESPİT (Neden?)
+                        </h3>
+                        <p class="text-jutsack-textGray text-sm leading-relaxed mb-4">
+                            <strong>Operasyonel Veriye Göre:</strong> 
+                            Yeni girecek "Şalvar Gömlek Takımlar" toplam 5 renk ve her renkten sadece 30'ar adet (Toplam 150 adet) stoğa sahip. Standart bir "Yeni Ürün Eklendi" duyurusu, bu sınırlı stoğun etkisini zayıflatır. Müşteri kitlemiz (%97 Kadın, ağırlıklı İstanbul/İzmir) trendleri hızlı tüketen ve tükenme korkusuna (FOMO) hızlı tepki veren bir demografidir.
+                        </p>
+                    </div>
+                    
+                    <!-- Sonuç/Aksiyon -->
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold mb-4 flex items-center text-jutsack-black">
+                            <i class="fa-solid fa-bullseye text-jutsack-gold mr-2"></i> STRATEJİK AKSİYON (Nasıl Pazarlarız?)
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border border-gray-100 rounded-lg shadow-sm">
+                                <strong class="text-sm block mb-1">Agresif Teaser ve VIP Erken Erişim:</strong>
+                                <p class="text-xs text-jutsack-textGray">Lansmandan 3 gün önce makro çekimlerle gizem yaratılmalıdır. Lansman günü, genel duyurudan 12 saat önce <strong>geçmiş müşterilere (CRM datası) SMS ile şifreli link gönderilerek</strong> "Sadece 150 şanslı kişiye özel" satış başlatılmalıdır.</p>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg shadow-sm">
+                                <strong class="text-sm block mb-1">UX/UI Mükemmelliği Şartı:</strong>
+                                <p class="text-xs text-jutsack-textGray">Anlık yoğun trafik oluşacağından, Şalvar Gömlek fotoğrafları sisteme kesinlikle 1. referans görselle aynı en-boy oranında (aspect ratio) yüklenmelidir. Arayüzde kayma veya buton çalışmama lüksü yoktur.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy 3: Content & Meta Ads -->
+        <section class="fade-in delay-3">
+            <h2 class="text-xl sm:text-2xl font-serif font-bold mb-5 sm:mb-6 flex items-start sm:items-center leading-snug">
+                <span class="w-8 h-8 rounded-full bg-jutsack-black text-white flex items-center justify-center text-sm mr-3 shrink-0 mt-1 sm:mt-0">3</span>
+                Reels Üretimi ve Bütçe Alokasyonu
+            </h2>
+            
+            <div class="cause-effect-card rounded-2xl p-5 sm:p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                    <!-- Neden -->
+                    <div class="bg-gray-50 p-5 sm:p-6 rounded-xl">
+                        <h3 class="text-base sm:text-lg font-bold mb-4 flex items-center text-jutsack-black">
+                            <i class="fa-solid fa-mobile-screen text-purple-500 mr-2"></i> VERİ & TESPİT (Neden?)
+                        </h3>
+                        <p class="text-jutsack-textGray text-sm leading-relaxed mb-4">
+                            <strong>Meta Business Suite Verisine Göre:</strong> 
+                            "How to tie Wrap Dress" gibi kullanım gösteren eğitici içerikler, statik görsellere göre %300 daha fazla organik gösterim (23.089 vs ortalama) almış ve doğrudan web sitesi alışverişi (dönüşüm) getirmiştir. <br><br>Ayrıca tüm satışın 1.0M TL'si Safari/iPhone üzerinden gerçekleşmiştir.
+                        </p>
+                    </div>
+                    
+                    <!-- Sonuç/Aksiyon -->
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold mb-4 flex items-center text-jutsack-black">
+                            <i class="fa-solid fa-video text-jutsack-gold mr-2"></i> STRATEJİK AKSİYON (Nasıl İçerik Üretmeliyiz?)
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="p-4 border border-gray-100 rounded-lg shadow-sm">
+                                <strong class="text-sm block mb-1">Ayna Karşısı GRWM (Get Ready With Me):</strong>
+                                <p class="text-xs text-jutsack-textGray">Yasemin ve Doğal'ın stokta kalan Şort Takımı ve Sorbet/Cobalt renklerini "Bu akşam hangisini giyelim?" konseptiyle, kendi sesleriyle, eğlenceli ve dinamik bir şekilde anlattıkları doğal bir video kurgulanmalıdır. Bu format, kitlede doğrudan "ben de istiyorum" hissi yaratır.</p>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg shadow-sm">
+                                <strong class="text-sm block mb-1">Hiper-Hedefli Reklam Çıkışı:</strong>
+                                <p class="text-xs text-jutsack-textGray">Bütçe rastgele harcanmamalı; Demografi verilerine dayanarak <strong>sadece iOS cihaz kullanan, İstanbul/İzmir lokasyonlarındaki kadınlara</strong> yönlendirilmelidir. Yönlendirilen trafik mobil Safari'de açılacağından footer destek modalları pürüzsüz çalışmalıdır.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UX & Code Directives Box -->
+        <div class="mt-8 bg-jutsack-black text-white p-5 sm:p-6 rounded-xl border-l-4 border-jutsack-gold fade-in delay-3">
+            <h3 class="text-base sm:text-lg font-bold mb-2 flex items-center"><i class="fa-solid fa-triangle-exclamation text-jutsack-gold mr-2"></i> Kritik Yazılım / UX Kontrol Listesi</h3>
+            <p class="text-sm text-gray-300 mb-4">Ağustos hedeflerinin %40'ı teknik altyapının bu kurgulara dayanabilmesine bağlıdır:</p>
+            <ul class="text-sm space-y-3 text-gray-300">
+                <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mr-3 mt-1 shrink-0"></i> <span><strong>Modallar:</strong> Çapraz satış (cross-sell) modalları ana sayfadaki slider görsellerinin arkasında kalmamalı veya onları kırmamalıdır.</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mr-3 mt-1 shrink-0"></i> <span><strong>Görsel Boyutları:</strong> Şalvar gömlek takımları ve cross-sell ürünlerinin yüklenen görselleri 1. referans ebatında olmalıdır (Layout kaymasını önlemek için).</span></li>
+                <li class="flex items-start"><i class="fa-solid fa-check text-green-400 mr-3 mt-1 shrink-0"></i> <span><strong>Müşteri Hizmetleri:</strong> "Kargom Nerede" ve diğer footer iletişim linklerinin tıklanabilirliği ve doğru sayfalara yönlendirmesi mobil safari'de test edilmelidir.</span></li>
+            </ul>
+        </div>
+        
+        <section class="fade-in delay-3 mt-10 sm:mt-12">
+            <h2 class="text-xl sm:text-2xl font-serif font-bold mb-5 sm:mb-6 flex items-start sm:items-center leading-snug">
+                <span class="w-8 h-8 rounded-full bg-jutsack-black text-white flex items-center justify-center text-sm mr-3 shrink-0 mt-1 sm:mt-0">4</span>
+                Ağustos Ayı 30 Günlük Taktiksel İçerik Takvimi
+            </h2>
+            <p class="text-gray-500 mb-6 sm:mb-8 max-w-3xl text-sm sm:text-base">Şalvar Gömlek Lansmanı ve Stok Eritme hedeflerine yönelik planlanmış, günlük bazda uygulanacak Story, Reels ve Carousel akışı.</p>
+
+            <div class="space-y-6">
+                <!-- Hafta 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 px-4 sm:px-6 py-4 border-b border-gray-200">
+                        <h3 class="font-bold text-sm sm:text-base text-jutsack-black">1. Hafta (1-7 Ağustos): Gizem Yaratma & VIP Lansman</h3>
+                    </div>
+                    <div class="p-0 sm:p-6">
+                        <div class="overflow-x-auto w-full">
+                            <table class="w-full text-xs sm:text-sm text-left min-w-[550px]">
+                                <thead class="text-[10px] sm:text-xs text-gray-500 uppercase bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 w-16 sm:w-20">Gün</th>
+                                        <th class="px-4 py-3 w-20 sm:w-24">Format</th>
+                                        <th class="px-4 py-3">İçerik Stratejisi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">1 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3"><strong>Teaser 1:</strong> Şalvar Gömlek deseninin çok yakın çekimi (Macro). "Yakında..." etiketiyle merak uyandırma.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">2 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-purple-100 text-purple-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Reels</span></td>
+                                        <td class="px-4 py-3"><strong>Ayna Karşısı GRWM:</strong> Yasemin ve Doğal, Sorbet vs Cobalt kombini deniyor. "Tarafını seç" kurgusu.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">3 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Dünkü Reels'ın sonuçlarını paylaşma (Anket). Kaybeden renk için Cross-Sell sayfasına link.</td>
+                                    </tr>
+                                    <tr class="border-b bg-yellow-50">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">4 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Carousel</span></td>
+                                        <td class="px-4 py-3"><strong>VIP Lansman:</strong> "Sadece 150 şanslı kişi". "Eski müşteriysen SMS'ini kontrol et!"</td>
+                                    </tr>
+                                    <tr class="border-b font-semibold bg-gray-50">
+                                        <td class="px-4 py-3 text-jutsack-gold whitespace-nowrap">5 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story x 3</span></td>
+                                        <td class="px-4 py-3 text-jutsack-black"><strong>GENEL LANSMAN GÜNÜ:</strong> Şalvar Gömlek Takım web sitesinde! "Azaldı", "Tükeniyor" fomo hikayeleri.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">6 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-purple-100 text-purple-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Reels</span></td>
+                                        <td class="px-4 py-3"><strong>Eğitici:</strong> Şalvar Gömlek takımının 3 farklı kullanım alanı (Gündüz plaj, akşam yemek).</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">7 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Müşteri geri bildirimleri (UGC) ve "Birlikte Al" kampanyasının hatırlatılması.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hafta 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 px-4 sm:px-6 py-4 border-b border-gray-200">
+                        <h3 class="font-bold text-sm sm:text-base text-jutsack-black">2. Hafta (8-14 Ağustos): Stok Eritme & AOV Yükseltme</h3>
+                    </div>
+                    <div class="p-0 sm:p-6">
+                        <div class="overflow-x-auto w-full">
+                            <table class="w-full text-xs sm:text-sm text-left min-w-[550px]">
+                                <thead class="text-[10px] sm:text-xs text-gray-500 uppercase bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 w-16 sm:w-20">Gün</th>
+                                        <th class="px-4 py-3 w-20 sm:w-24">Format</th>
+                                        <th class="px-4 py-3">İçerik Stratejisi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">8 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Carousel</span></td>
+                                        <td class="px-4 py-3">"Gündüzden Geceye Valiz Klasikleri": Merlot Elbise ve yanına önerilen Şort Takımları (Çapraz Satış ürünleri).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">9 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">"Kombinini tamamla" modülünün ekrandan videosu. Sitenin kullanım kolaylığını göster ve "İndirimi sepette gör" çağrısı yap.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">10 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-purple-100 text-purple-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Reels</span></td>
+                                        <td class="px-4 py-3"><strong>"How to tie Wrap Dress" Benzeri:</strong> Sorbet ve Cobalt için detaylı ve yavaş çekim bağlama taktikleri. (Reklama çıkılacak video).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">11 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Reels kamera arkası, samimi anlar ve doğrudan ürün linkleri (Özellikle iOS kitlesi hedeflenerek).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">12 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Stok uyarıları. "Şort takımlarında son 20 adet" gibi net rakamlar vererek aciliyet yarat.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">13 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Carousel</span></td>
+                                        <td class="px-4 py-3">Şalvar Gömlek Takımların müşterilerden gelen fotoğrafları (Eğer hızlı teslimat olduysa) veya detay fotoğrafları.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">14 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Hafta sonu motivasyonu: Yazlık mekanlardan veya ofisten estetik Jutsack kızları.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hafta 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 px-4 sm:px-6 py-4 border-b border-gray-200">
+                        <h3 class="font-bold text-sm sm:text-base text-jutsack-black">3. Hafta (15-21 Ağustos): Etkileşim & Fırsat Hatırlatmaları</h3>
+                    </div>
+                    <div class="p-0 sm:p-6">
+                        <div class="overflow-x-auto w-full">
+                            <table class="w-full text-xs sm:text-sm text-left min-w-[550px]">
+                                <thead class="text-[10px] sm:text-xs text-gray-500 uppercase bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 w-16 sm:w-20">Gün</th>
+                                        <th class="px-4 py-3 w-20 sm:w-24">Format</th>
+                                        <th class="px-4 py-3">İçerik Stratejisi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">15 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-purple-100 text-purple-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Reels</span></td>
+                                        <td class="px-4 py-3">Ofis/Paketleme rutini. "Arka planda neler oluyor?" - Kargo sürecindeki özeni göster (Güven inşası).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">16 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Pazartesi sendromuna karşı neşeli bir içerik. Şalvar gömlek takımın rahatlığı vurgusu.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">17 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Carousel</span></td>
+                                        <td class="px-4 py-3">Mini Wrapler için renk rehberi. "Hangi ten rengine hangi wrap daha çok yakışır?" (Kaydetmeye teşvik).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">18 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">"Soru Cevap" (Q&A). Bedenler, kumaşlar ve "Kombin önerisi" hakkında izleyicilerden soru topla.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">19 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Dünkü soruları cevapla, her cevapta doğrudan ürün linki (link sticker) kullan.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">20 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-purple-100 text-purple-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Reels</span></td>
+                                        <td class="px-4 py-3">Şort takımlarının hareketliliği. Yürüyüş, koşuşturma anları. "En rahat gün" konsepti.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">21 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Hafta sonuna özel "Son 48 saatlik" Bundle fırsat duyurusu.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hafta 4 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-gray-50 px-4 sm:px-6 py-4 border-b border-gray-200">
+                        <h3 class="font-bold text-sm sm:text-base text-jutsack-black">4. Hafta (22-30 Ağustos): Flaş Kapanış & Son Şans</h3>
+                    </div>
+                    <div class="p-0 sm:p-6">
+                        <div class="overflow-x-auto w-full">
+                            <table class="w-full text-xs sm:text-sm text-left min-w-[550px]">
+                                <thead class="text-[10px] sm:text-xs text-gray-500 uppercase bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-3 w-16 sm:w-20">Gün</th>
+                                        <th class="px-4 py-3 w-20 sm:w-24">Format</th>
+                                        <th class="px-4 py-3">İçerik Stratejisi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">22 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Carousel</span></td>
+                                        <td class="px-4 py-3">"Ayın En Çok Satanları": Merlot, Cherry ve yanlarına iliştirilmiş stoktaki diğer ürünler.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">23 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">"Yaz bitmeden yetiş". Stoklarda tek tük kalan ürünleri "Son şans" olarak paylaş.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">24 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-purple-100 text-purple-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Reels</span></td>
+                                        <td class="px-4 py-3">Estetik ve yavaşlatılmış (slow-mo) ürün detayları. Kalite algısını zirveye taşıyan asmr tarzı video.</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">25 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Retargeting kampanyasına destek: "Sepetinde unuttuğun bir şeyler var." (Terk edilmiş sepetlere yönelik).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">26 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-blue-100 text-blue-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Carousel</span></td>
+                                        <td class="px-4 py-3">"Sonbahara hazırlık" - Yaz ürünlerini hafif serin akşamlarda nasıl kombinleriz? (Ceketlerle/Hırkalarla).</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3 font-semibold text-gray-900 whitespace-nowrap">27-28 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-pink-100 text-pink-800 text-[10px] sm:text-xs font-medium px-2 py-0.5 rounded">Story</span></td>
+                                        <td class="px-4 py-3">Geri sayım. Ağustos sonu fırsatlarında son 48 saat. Sık ve agresif (ama şık) paylaşımlar.</td>
+                                    </tr>
+                                    <tr class="bg-red-50 text-red-900">
+                                        <td class="px-4 py-3 font-bold whitespace-nowrap">29-30 Ağu</td>
+                                        <td class="px-4 py-3"><span class="bg-red-200 text-red-900 text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded">Canlı / Story</span></td>
+                                        <td class="px-4 py-3"><strong>BÜYÜK KAPANIŞ:</strong> Ayın son günleri. "Son parça" ürünler. Canlı yayında anlık satışlar. Hedef ciroya ulaşma kutlaması.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+    
+    <footer class="mt-12 sm:mt-16 text-center text-xs text-gray-400 pb-10 px-4">
+        <p class="uppercase tracking-widest mb-2">© 2026 Jutsack E-Ticaret Yönetimi</p>
+        <p>Visual Communication & Digital Transformation Specialist Semanur Ayyıldız tarafından hazırlanmıştır. Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>
